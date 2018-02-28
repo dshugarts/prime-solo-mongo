@@ -1,0 +1,25 @@
+//1. 
+db.createCollection('orders')
+
+//2.
+db.orders.insert({orderDate: new Date("2017-02-03"), orderTotal: 100, lineItems: [{unitPrice: 25, quantity: 4, productName: "Case of Beer"}]})
+db.orders.insert({orderDate: new Date("2017-04-04"), orderTotal: 200, lineItems: [{unitPrice: 25, quantity: 8, productName: "Gift Cards"}]})
+db.orders.insert({orderDate: new Date("2017-01-02"), orderTotal: 500, lineItems: [{unitPrice: 100, quantity: 5, productName: "Apple TV"}]})
+
+//3.
+db.orders.find().pretty()
+
+//4.
+db.orders.find({orderDate: {$gt: "2017/01/31"}})
+
+//5.
+db.orders.update({orderDate: new Date("2017-02-03")}, {$set: {orderTotal: 63}})
+
+//6.
+db.orders.update({orderDate: new Date("2017-04-04")}, {$set: {lineItems: [{unitPrice: 25, quantity: 8, productName: "Gift Cards", Rating: 5}]}})
+
+//7
+db.orders.update({orderDate: new Date("2017-01-02")}, {$set: {lineItems: [{unitPrice: 100, quantity: 2, productName: "Transistor Radios"}]}})
+
+//8
+db.orders.find({lineItems: {$elemMatch: {quantity: {$gte: 2, $lt: 10}}}})
