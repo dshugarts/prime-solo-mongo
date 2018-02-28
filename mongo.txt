@@ -19,7 +19,7 @@ db.orders.update({orderDate: new Date("2017-02-03")}, {$set: {orderTotal: 63}})
 db.orders.update({orderDate: new Date("2017-04-04")}, {$set: {lineItems: [{unitPrice: 25, quantity: 8, productName: "Gift Cards", Rating: 5}]}})
 
 //7
-db.orders.update({orderDate: new Date("2017-01-02")}, {$set: {lineItems: [{unitPrice: 100, quantity: 2, productName: "Transistor Radios"}]}})
+db.orders.update({orderDate: new Date("2017-01-02")}, {$set: {lineItems: [{productName: "Transistor Radios", unitPrice: 100, quantity: 2}]}})
 
 //8
 db.orders.find({lineItems: {$elemMatch: {quantity: {$gte: 2, $lt: 10}}}})
